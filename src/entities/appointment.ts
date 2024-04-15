@@ -1,4 +1,4 @@
-interface AppointmentProps {
+export interface AppointmentProps {
     customer: string;
     startsAt: Date;
     endsAt: Date;
@@ -9,6 +9,10 @@ export class Appointment {
 
     constructor(props: AppointmentProps) {
         this.props = props;
+
+        if (Number(this.props.startsAt) > Number(this.props.endsAt)) {
+            throw new Error;
+        };
     }
 
     get customer(): string {
